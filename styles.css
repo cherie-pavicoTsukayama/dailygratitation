@@ -1,0 +1,54 @@
+.clockface {
+  box-sizing: border-box;
+  width: 100px;
+  height: 75px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: black;
+}
+
+button {
+  box-sizing: border-box;
+  background-color: aquamarine;
+  padding: 15px 30px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+
+p {
+  color: white;
+  font-size: 4rem;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.ml-5 {
+  margin-left: 3rem;
+}
+
+.display-none {
+  display: none;
+}
