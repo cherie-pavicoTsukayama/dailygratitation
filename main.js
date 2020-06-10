@@ -2,6 +2,7 @@ const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause');
 const secondsText = document.getElementById('secondsText');
 const minutesText = document.getElementById('minutesText')
+const restartTimer = document.getElementById('restartTimer');
 // eslint-disable-next-line no-unused-vars
 let startCounterId = null;
 // eslint-disable-next-line no-unused-vars
@@ -10,6 +11,8 @@ let minutes = 1;
 
 startButton.addEventListener('click', hideStartButton);
 pauseButton.addEventListener('click', hidePauseButton);
+restartTimer.addEventListener('click', restartTimerButton);
+
 
 
 function hideStartButton() {
@@ -59,4 +62,14 @@ function startCounter() {
 
 function handleClickPauseTime() {
   clearInterval(startCounterId);
+}
+
+function restartTimerButton() {
+  clearInterval(startCounterId);
+  startButton.classList.remove('display-none');
+  pauseButton.classList.add('display-none');
+  seconds = '59';
+  minutes = 1;
+  minutesText.textContent = minutes;
+  secondsText.textContent = seconds;
 }
