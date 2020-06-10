@@ -23,6 +23,18 @@ p.labels {
   cursor: pointer;
 }
 
+.list-col1-mr {
+  margin-right: 3rem;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 10px;
+}
+
 .d-flex {
   display: flex;
 }
@@ -51,6 +63,14 @@ p.labels {
   margin-left: 1.5rem;
 }
 
+.mr-4 {
+  margin-right: 1.5rem;
+}
+
+.mr-5 {
+  margin-right: 3rem;
+}
+
 .mb-0 {
   margin-bottom: 0;
 }
@@ -71,13 +91,19 @@ p.labels {
   text-align: center;
 }
 
-.timer-numbers {
-  display: block;
-  color: white;
-  font-size: 5rem;
-  line-height: normal;
-}
-
 .display-none {
   display: none;
+}
+
+/* ----------- iPhone X ----------- */
+/* Portrait */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 812px)
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+  .list-col1-mr {
+    margin-right: 0rem;
+  }
+
 }
