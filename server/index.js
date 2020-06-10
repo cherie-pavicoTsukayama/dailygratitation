@@ -1,11 +1,14 @@
-const startButton = document.getElementById("start");
-const pauseButton = document.getElementById("pause");
-
+const startButton = document.getElementById('start');
+const pauseButton = document.getElementById('pause');
+// eslint-disable-next-line no-unused-vars
+let startCounterId = null;
+// eslint-disable-next-line no-unused-vars
+let counter = 0;
 
 startButton.addEventListener('click', hideStartButton);
 pauseButton.addEventListener('click', hidePauseButton);
 
-function hideStartButton(){
+function hideStartButton() {
   startButton.classList.add('display-none');
   pauseButton.classList.remove('display-none');
   handleClickStartTime();
@@ -16,19 +19,15 @@ function hidePauseButton() {
   pauseButton.classList.add('display-none');
 }
 
-const startCounterId = null;
-const counter = 0;
-
-handleClickStartTime() {
-  // startCounterId = setInterval(startCounter, 1000);
+function handleClickStartTime() {
+  startCounterId = setInterval(startCounter, 1000);
 }
 
-startCounter() {
-  counter =+ 1
-  console.log(counter);
+function startCounter() {
+  counter += 1;
 }
 
-// handleClickPauseTime() {
+// function handleClickPauseTime() {
 //   this.setState({
 //     button: 'fas fa-play'
 //   });
