@@ -148,7 +148,6 @@ function makeChecklist(array) {
     listItemContainer2.append(label);
     col2.append(listItemContainer2)
   }
-  // console.log(list);
 }
 
 function checkboxLimit(checkgroup, limit) {
@@ -167,15 +166,15 @@ const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
 function switchOutList() {
+  if (meditaionItemsContainer.classList[0] === 'display-none') {
     meditaionItemsContainer.classList.remove('display-none');
-    console.log(list);
     const checkedItems = [];
     for (var i = 0; i < list.length; i++) {
       if (list[i].checked) {
-       checkedItems.push(list[i].value);
+        checkedItems.push(list[i].value);
       }
     }
-    console.log(checkedItems);
+
     for (let i = 0; i < checkedItems.length; i++) {
       const meditaionItem = document.createElement('div');
       meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
@@ -183,4 +182,5 @@ function switchOutList() {
       meditaionItem.textContent = checkedItems[i];
       meditaionItemsContainer.append(meditaionItem);
     }
+  }
 }
