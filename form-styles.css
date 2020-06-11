@@ -35,6 +35,19 @@ ul {
   padding: 10px;
 }
 
+.form-container-styling {
+  border: 1px solid rgb(220, 220, 220);
+  padding: 30px 0px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.shadow {
+  box-shadow: 0px 1px 3px rgba(109, 109, 109, 0.331);
+}
+
 .d-flex {
   display: flex;
 }
@@ -105,5 +118,11 @@ ul {
   .list-col1-mr {
     margin-right: 0rem;
   }
-
+    .form-container-styling {
+    border: 1px solid black;
+    padding: 30px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
 }

@@ -1,5 +1,3 @@
-
-
 const freeListItems = [
   "My health",
   "My job",
@@ -79,4 +77,4 @@ function checkboxLimit(checkgroup, limit) {
   }
 }
 const list = document.getElementsByClassName('checkbox');
-checkboxLimit(list, 3);
+checkboxLimit(list, 10);
