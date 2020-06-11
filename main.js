@@ -4,7 +4,7 @@ const secondsText = document.getElementById('secondsText');
 const minutesText = document.getElementById('minutesText')
 const restartTimer = document.getElementById('restartTimer');
 const listContainer = document.getElementById('listContainer');
-const meditaionItems = document.getElementById('meditationItems');
+const meditaionItemsContainer = document.getElementById('meditationItemsContainer');
 // eslint-disable-next-line no-unused-vars
 let startCounterId = null;
 // eslint-disable-next-line no-unused-vars
@@ -166,7 +166,7 @@ const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
 function switchOutList() {
-    meditaionItems.classList.remove('display-none');
+    meditaionItemsContainer.classList.remove('display-none');
     console.log(list);
     const checkedItems = [];
     for (var i = 0; i < list.length; i++) {
@@ -175,4 +175,11 @@ function switchOutList() {
       }
     }
     console.log(checkedItems);
+    for (let i = 0; i < checkedItems.length; i++) {
+      const meditaionItem = document.createElement('div');
+      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
+      meditaionItem.setAttribute('class', 'meditation-item shadow');
+      meditaionItem.textContent = checkedItems[i];
+      meditaionItemsContainer.append(meditaionItem);
+    }
 }
