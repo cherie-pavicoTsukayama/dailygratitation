@@ -29,14 +29,15 @@ function hidePauseButton() {
   handleClickPauseTime();
 }
 
-function handleClickStartTime() {
+function handleClickStartTime(event) {
+  // event.preventDefault();
   startCounterId = setInterval(startCounter, 1000);
   listContainer.classList.add('fade-out')
   setTimeout(() => {
     listContainer.classList.add('display-none')
     switchOutList();
   },
-  1000);
+  900);
 }
 
 function startCounter() {
