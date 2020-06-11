@@ -5,22 +5,32 @@ const minutesText = document.getElementById('minutesText')
 const restartTimer = document.getElementById('restartTimer');
 const listContainer = document.getElementById('listContainer');
 const meditaionItemsContainer = document.getElementById('meditationItemsContainer');
+const noItemsSelectedModalCloseButton = document.getElementById('closeModal')
+const noCheckMarkModal = document.getElementById('noCheckMarkModal');
 // eslint-disable-next-line no-unused-vars
 let startCounterId = null;
 // eslint-disable-next-line no-unused-vars
 let seconds = '59';
 let minutes = 1;
 
-startButton.addEventListener('click', hideStartButton);
+startButton.addEventListener('click', handleClickStartTime);
 pauseButton.addEventListener('click', hidePauseButton);
 restartTimer.addEventListener('click', restartTimerButton);
+noItemsSelectedModalCloseButton.addEventListener('click', handleNoItemsSelectedCloseModal);
 
-
+function handleNoItemsSelectedCloseModal() {
+  noCheckMarkModal.classList.add('fade-out');
+  noCheckMarkModal.classList.remove('fade-in')
+  setTimeout(() => {
+    noCheckMarkModal.classList.add('display-none')
+    noCheckMarkModal.classList.remove('fade-out')
+  },
+    900);
+}
 
 function hideStartButton() {
   startButton.classList.add('display-none');
   pauseButton.classList.remove('display-none');
-  handleClickStartTime();
 }
 
 function hidePauseButton() {
@@ -31,13 +41,23 @@ function hidePauseButton() {
 
 function handleClickStartTime(event) {
   // event.preventDefault();
-  startCounterId = setInterval(startCounter, 1000);
-  listContainer.classList.add('fade-out')
-  setTimeout(() => {
-    listContainer.classList.add('display-none')
-    switchOutList();
-  },
-  900);
+  const checkedItems = [];
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].checked) {
+      checkedItems.push(list[i].value);
+    }
+  }
+  if (checkedItems.length !== 0) {
+    hideStartButton();
+    startCounterId = setInterval(startCounter, 1000);
+    listContainer.classList.add('fade-out')
+    setTimeout(() => {
+      listContainer.classList.add('display-none')
+
+    },
+      900);
+  }
+  switchOutList(checkedItems);
 }
 
 function startCounter() {
@@ -165,26 +185,18 @@ function checkboxLimit(checkgroup, limit) {
 const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
-function switchOutList() {
-  if (meditaionItemsContainer.classList[0] === 'display-none') {
+function switchOutList(checklist) {
+  if (checklist.length !== 0) {
     meditaionItemsContainer.classList.remove('display-none');
-    const checkedItems = [];
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].checked) {
-        checkedItems.push(list[i].value);
-      }
+    for (let i = 0; i < checklist.length; i++) {
+      const meditaionItem = document.createElement('div');
+      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
+      meditaionItem.setAttribute('class', 'meditation-item shadow');
+      meditaionItem.textContent = checklist[i];
+      meditaionItemsContainer.append(meditaionItem);
     }
-    if(checkedItems.length !== 0) {
-      for (let i = 0; i < checkedItems.length; i++) {
-        const meditaionItem = document.createElement('div');
-        meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
-        meditaionItem.setAttribute('class', 'meditation-item shadow');
-        meditaionItem.textContent = checkedItems[i];
-        meditaionItemsContainer.append(meditaionItem);
-      }
-    } else {
-      
-    }
-
+  } else {
+    noCheckMarkModal.classList.add('fade-in');
+    noCheckMarkModal.classList.remove('display-none');
   }
 }
