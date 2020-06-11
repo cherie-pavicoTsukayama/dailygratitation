@@ -195,7 +195,7 @@ function switchOutList(checklist) {
     meditaionItemsContainer.classList.remove('display-none');
     for (let i = 0; i < checklist.length; i++) {
       const meditaionItem = document.createElement('div');
-      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
+      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in justify-content-center');
       meditaionItem.setAttribute('class', 'meditation-item shadow');
       meditaionItem.textContent = checklist[i];
       meditaionItemsContainer.append(meditaionItem);

@@ -278,9 +278,16 @@ button.close-modal {
   }
     .form-container-styling {
     border: 1px solid black;
-    padding: 30px 0px;
+    padding: 30px 15px;
     width: 100%;
     display: flex;
     justify-content: start;
 }
+.display-none {
+  display: none;
+}
+.justify-content-center {
+  justify-content: center;
+}
+
 }
