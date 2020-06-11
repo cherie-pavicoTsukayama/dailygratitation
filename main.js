@@ -40,7 +40,6 @@ function hidePauseButton() {
 }
 
 function handleClickStartTime(event) {
-  // event.preventDefault();
   const checkedItems = [];
   for (var i = 0; i < list.length; i++) {
     if (list[i].checked) {
@@ -54,10 +53,14 @@ function handleClickStartTime(event) {
     setTimeout(() => {
       listContainer.classList.add('display-none')
 
+      switchOutList(checkedItems);
     },
       900);
+  } else {
+    noCheckMarkModal.classList.add('fade-in');
+    noCheckMarkModal.classList.remove('display-none');
   }
-  switchOutList(checkedItems);
+
 }
 
 function startCounter() {
@@ -186,7 +189,9 @@ const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
 function switchOutList(checklist) {
-  if (checklist.length !== 0) {
+  if (meditaionItemsContainer.childElementCount > 0) {
+      return;
+    }
     meditaionItemsContainer.classList.remove('display-none');
     for (let i = 0; i < checklist.length; i++) {
       const meditaionItem = document.createElement('div');
@@ -195,8 +200,4 @@ function switchOutList(checklist) {
       meditaionItem.textContent = checklist[i];
       meditaionItemsContainer.append(meditaionItem);
     }
-  } else {
-    noCheckMarkModal.classList.add('fade-in');
-    noCheckMarkModal.classList.remove('display-none');
-  }
 }
