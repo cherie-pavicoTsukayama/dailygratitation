@@ -62,8 +62,8 @@ function startCounter() {
     clearInterval(startCounterId);
     startButton.classList.remove('display-none');
     pauseButton.classList.add('display-none');
-    seconds = '59';
-    minutes = 1;
+    seconds = 0;
+    minutes = 0;
     minutesText.textContent = minutes;
     secondsText.textContent = seconds;
   }
@@ -174,13 +174,17 @@ function switchOutList() {
         checkedItems.push(list[i].value);
       }
     }
-
-    for (let i = 0; i < checkedItems.length; i++) {
-      const meditaionItem = document.createElement('div');
-      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
-      meditaionItem.setAttribute('class', 'meditation-item shadow');
-      meditaionItem.textContent = checkedItems[i];
-      meditaionItemsContainer.append(meditaionItem);
+    if(checkedItems.length !== 0) {
+      for (let i = 0; i < checkedItems.length; i++) {
+        const meditaionItem = document.createElement('div');
+        meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in');
+        meditaionItem.setAttribute('class', 'meditation-item shadow');
+        meditaionItem.textContent = checkedItems[i];
+        meditaionItemsContainer.append(meditaionItem);
+      }
+    } else {
+      
     }
+
   }
 }
