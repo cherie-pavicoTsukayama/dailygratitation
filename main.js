@@ -189,7 +189,7 @@ const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
 function switchOutList(checklist) {
-  if (meditaionItemsContainer.childElementCount > 0) {
+  if (meditaionItemsContainer.childElementCount > 1) {
       return;
     }
     meditaionItemsContainer.classList.remove('display-none');
