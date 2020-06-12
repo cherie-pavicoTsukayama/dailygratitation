@@ -126,7 +126,8 @@ function resetGratitationButton() {
     const children = meditaionItemsContainer.childNodes;
     for (let i = 0; i < children.length; i++) {
       console.log(children)
-      meditaionItemsContainer.removeChild(children[i]);
+      const child = meditaionItemsContainer.lastElementChild
+      meditaionItemsContainer.removeChild(child);
     }
 
   }
