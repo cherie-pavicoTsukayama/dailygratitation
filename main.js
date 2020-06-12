@@ -123,13 +123,7 @@ function resetGratitationButton() {
   checkedItems = [];
   listContainer.setAttribute('class', 'd-flex flex-wrap form-container-styling shadow fade-in')
   if (meditaionItemsContainer.hasChildNodes()) {
-    const children = meditaionItemsContainer.childNodes;
-    for (let i = 0; i < children.length; i++) {
-      console.log(children)
-      const child = meditaionItemsContainer.lastElementChild
-      meditaionItemsContainer.removeChild(child);
-    }
-
+    meditaionItemsContainer.innerHTML = "";
   }
 }
 
