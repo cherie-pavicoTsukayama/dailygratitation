@@ -87,6 +87,16 @@ button.close-modal {
   transition: all .2s ease-in-out;
 }
 
+button.reset-restart {
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  padding: 0px 30px;
+  margin: 30px 10px 0 10px;
+  font-size: 1.5rem;
+  border: none;
+  color: rgb(172, 172, 172);
+}
+
 .shadow {
   box-shadow: 0px 1px 3px rgba(109, 109, 109, 0.331);
 }
