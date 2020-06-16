@@ -8,7 +8,6 @@ const listContainer = document.getElementById('listContainer');
 const meditaionItemsContainer = document.getElementById('meditationItemsContainer');
 const noItemsSelectedModalCloseButton = document.getElementById('closeModal')
 const noCheckMarkModal = document.getElementById('noCheckMarkModal');
-const startMessage = document.getElementById('startMessage')
 let checkedItems = [];
 
 // eslint-disable-next-line no-unused-vars
@@ -123,8 +122,8 @@ function resetGratitationButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = 59;
-  minutes = 1;
+  seconds = '00';
+  minutes = 2;
   minutesText.textContent = minutes;
   secondsText.textContent = seconds;
   meditaionItemsContainer.classList.add('display-none');
@@ -217,15 +216,17 @@ const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
 function switchOutList(checklist) {
-  if (meditaionItemsContainer.childElementCount > 1) {
+  if (meditaionItemsContainer.childElementCount > 0) {
       return;
+    } else {
+      meditaionItemsContainer.classList.remove('display-none');
+      for (let i = 0; i < checklist.length; i++) {
+        const meditaionItem = document.createElement('div');
+        meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in justify-content-center');
+        meditaionItem.setAttribute('class', 'meditation-item shadow');
+        meditaionItem.textContent = checklist[i];
+        meditaionItemsContainer.append(meditaionItem);
+      }
     }
-    meditaionItemsContainer.classList.remove('display-none');
-    for (let i = 0; i < checklist.length; i++) {
-      const meditaionItem = document.createElement('div');
-      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in justify-content-center');
-      meditaionItem.setAttribute('class', 'meditation-item shadow');
-      meditaionItem.textContent = checklist[i];
-      meditaionItemsContainer.append(meditaionItem);
-    }
+
 }
