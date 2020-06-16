@@ -153,6 +153,11 @@ button.reset-restart {
   margin-top: 3rem;
 }
 
+.mx-4 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
 .col-12 {
   width: 100%;
 }

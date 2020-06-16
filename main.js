@@ -8,6 +8,8 @@ const listContainer = document.getElementById('listContainer');
 const meditaionItemsContainer = document.getElementById('meditationItemsContainer');
 const noItemsSelectedModalCloseButton = document.getElementById('closeModal')
 const noCheckMarkModal = document.getElementById('noCheckMarkModal');
+const twoMinButton = document.getElementById('twoMin');
+const fiveMinButton = document.getElementById('fiveMin');
 let checkedItems = [];
 
 // eslint-disable-next-line no-unused-vars
@@ -21,6 +23,8 @@ pauseButton.addEventListener('click', hidePauseButton);
 restartTimer.addEventListener('click', restartTimerButton);
 resetGratitaion.addEventListener('click', resetGratitationButton);
 noItemsSelectedModalCloseButton.addEventListener('click', handleNoItemsSelectedCloseModal);
+twoMinButton.addEventListener('click', handleClickTwoMinButton);
+fiveMinButton.addEventListener('click', handleClickFiveMinButton);
 
 function handleNoItemsSelectedCloseModal() {
   noCheckMarkModal.classList.add('fade-out');
@@ -30,6 +34,16 @@ function handleNoItemsSelectedCloseModal() {
     noCheckMarkModal.classList.remove('fade-out')
   },
     900);
+}
+
+function handleClickTwoMinButton() {
+  minutesText.textContent = 2;
+  minutes = 2;
+}
+
+function handleClickFiveMinButton() {
+  minutesText.textContent = 5;
+  minutes = 5;
 }
 
 function hideStartButton() {
@@ -67,10 +81,11 @@ function handleClickStartTime(event) {
 }
 
 function startCounter() {
-  if (minutes === 2) {
+  if (minutes === 2 || minutes === 5) {
     minutes -= 1;
     minutesText.textContent = minutes;
   }
+
   if (seconds > 0) {
     seconds -= 1;
     const secString = seconds.toString()
@@ -86,9 +101,10 @@ function startCounter() {
   }
 
   if (minutes > 0 && seconds === 0) {
-    seconds = 60;
+    seconds = 59;
     minutes -= 1;
     minutesText.textContent = minutes;
+    secondsText.textContent = seconds;
   }
 
   if (minutes === 0 && seconds === 0) {
