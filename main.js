@@ -13,8 +13,8 @@ let checkedItems = [];
 // eslint-disable-next-line no-unused-vars
 let startCounterId = null;
 // eslint-disable-next-line no-unused-vars
-let seconds = '59';
-let minutes = 1;
+let seconds = 60;
+let minutes = 2;
 
 startButton.addEventListener('click', handleClickStartTime);
 pauseButton.addEventListener('click', hidePauseButton);
@@ -67,20 +67,27 @@ function handleClickStartTime(event) {
 }
 
 function startCounter() {
-
+  if (minutes === 2) {
+    minutes -= 1;
+    minutesText.textContent = minutes;
+  }
   if (seconds > 0) {
     seconds -= 1;
-    secondsText.textContent = seconds;
-  }
+    const secString = seconds.toString()
+    console.log(secString.length)
+     return (secString.length > 1) ? (secondsText.textContent = seconds)
+       : (secondsText.textContent = '0' + seconds)
+    }
+
 
   if (seconds === 59) {
     minutesText.textContent = minutes;
     minutes -= 1
   }
 
-  if (minutes === 1 && seconds === 0) {
+  if (minutes > 0 && seconds === 0) {
     seconds = 60;
-    minutes = 0;
+    minutes -= 1;
     minutesText.textContent = minutes;
   }
 
@@ -104,10 +111,10 @@ function restartTimerButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = '59';
-  minutes = 1;
+  seconds = 60;
+  minutes = 2;
   minutesText.textContent = minutes;
-  secondsText.textContent = seconds;
+  secondsText.textContent = '00';
 }
 
 function resetGratitationButton() {
@@ -115,8 +122,8 @@ function resetGratitationButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = '59';
-  minutes = 1;
+  seconds = '00';
+  minutes = 2;
   minutesText.textContent = minutes;
   secondsText.textContent = seconds;
   meditaionItemsContainer.classList.add('display-none');
@@ -209,19 +216,17 @@ const list = document.getElementsByClassName('checkbox');
 checkboxLimit(list, 10);
 
 function switchOutList(checklist) {
-  if (meditaionItemsContainer.childElementCount > 1) {
+  if (meditaionItemsContainer.childElementCount > 0) {
       return;
+    } else {
+      meditaionItemsContainer.classList.remove('display-none');
+      for (let i = 0; i < checklist.length; i++) {
+        const meditaionItem = document.createElement('div');
+        meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in justify-content-center');
+        meditaionItem.setAttribute('class', 'meditation-item shadow');
+        meditaionItem.textContent = checklist[i];
+        meditaionItemsContainer.append(meditaionItem);
+      }
     }
-    meditaionItemsContainer.classList.remove('display-none');
-    const beAloneParagraph = document.createElement('p');
-    beAloneParagraph.setAttribute('class', 'col-12 text-center');
-    beAloneParagraph.textContent = 'Be alone, be silent, be still, for just 2 mintues starting now...';
-    meditaionItemsContainer.append(beAloneParagraph);
-    for (let i = 0; i < checklist.length; i++) {
-      const meditaionItem = document.createElement('div');
-      meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in justify-content-center');
-      meditaionItem.setAttribute('class', 'meditation-item shadow');
-      meditaionItem.textContent = checklist[i];
-      meditaionItemsContainer.append(meditaionItem);
-    }
+
 }

@@ -10,7 +10,7 @@ button {
   box-sizing: border-box;
   background-color: orange;
   padding: 0px 30px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   border-radius: 10px;
   font-size: 2rem;
   color: white;
@@ -274,6 +274,10 @@ button.reset-restart {
 
 .display-none {
   display: none;
+}
+
+.visibility-hidden {
+  visibility: hidden;
 }
 
 /* ----------- iPhone X ----------- */
