@@ -8,6 +8,7 @@ const listContainer = document.getElementById('listContainer');
 const meditaionItemsContainer = document.getElementById('meditationItemsContainer');
 const noItemsSelectedModalCloseButton = document.getElementById('closeModal')
 const noCheckMarkModal = document.getElementById('noCheckMarkModal');
+const startMessage = document.getElementById('startMessage')
 let checkedItems = [];
 
 // eslint-disable-next-line no-unused-vars
@@ -49,9 +50,6 @@ function handleClickStartTime(event) {
       checkedItems.push(list[i].value);
     }
   }
-  const startMessage = document.getElementById('startMessage')
-  startMessage.classList.remove('visibility-hidden');
-  startMessage.classList.add('fade-in');
   if (checkedItems.length !== 0) {
     hideStartButton();
     startCounterId = setInterval(startCounter, 1000);
@@ -223,10 +221,6 @@ function switchOutList(checklist) {
       return;
     }
     meditaionItemsContainer.classList.remove('display-none');
-    const beAloneParagraph = document.createElement('p');
-    beAloneParagraph.setAttribute('class', 'col-12 text-center');
-    beAloneParagraph.textContent = 'Be alone, be silent, be still, for just 2 mintues starting now...';
-    meditaionItemsContainer.append(beAloneParagraph);
     for (let i = 0; i < checklist.length; i++) {
       const meditaionItem = document.createElement('div');
       meditaionItemsContainer.setAttribute('class', 'form-container-styling shadow d-flex flex-wrap fade-in justify-content-center');
