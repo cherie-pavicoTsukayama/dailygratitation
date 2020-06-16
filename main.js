@@ -49,6 +49,9 @@ function handleClickStartTime(event) {
       checkedItems.push(list[i].value);
     }
   }
+  const startMessage = document.getElementById('startMessage')
+  startMessage.classList.remove('visibility-hidden');
+  startMessage.classList.add('fade-in');
   if (checkedItems.length !== 0) {
     hideStartButton();
     startCounterId = setInterval(startCounter, 1000);
