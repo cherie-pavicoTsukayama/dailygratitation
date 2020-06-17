@@ -10,6 +10,8 @@ const noItemsSelectedModalCloseButton = document.getElementById('closeModal')
 const noCheckMarkModal = document.getElementById('noCheckMarkModal');
 const twoMinButton = document.getElementById('twoMin');
 const fiveMinButton = document.getElementById('fiveMin');
+const completed = document.getElementById('completed');
+const closeCompletedModal = document.getElementById('closeCompletedModal');
 let checkedItems = [];
 
 // eslint-disable-next-line no-unused-vars
@@ -26,6 +28,7 @@ resetGratitaion.addEventListener('click', resetGratitationButton);
 noItemsSelectedModalCloseButton.addEventListener('click', handleNoItemsSelectedCloseModal);
 twoMinButton.addEventListener('click', handleClickTwoMinButton);
 fiveMinButton.addEventListener('click', handleClickFiveMinButton);
+closeCompletedModal.addEventListener('click', handleCloseCompletedModal);
 
 function handleNoItemsSelectedCloseModal() {
   noCheckMarkModal.classList.add('fade-out');
@@ -36,6 +39,18 @@ function handleNoItemsSelectedCloseModal() {
   },
     900);
 }
+
+function handleCloseCompletedModal() {
+  completed.classList.add('fade-out');
+  completed.classList.remove('fade-in')
+  resetGratitationButton();
+  setTimeout(() => {
+    completed.classList.add('display-none')
+    completed.classList.remove('fade-out')
+  },
+    900);
+}
+
 
 function handleClickTwoMinButton() {
   minutesText.textContent = 2;
@@ -125,6 +140,8 @@ function startCounter() {
     minutes = 0;
     minutesText.textContent = minutes;
     secondsText.textContent = seconds;
+    completed.classList.add('fade-in');
+    completed.classList.remove('display-none');
   }
 
 }
@@ -149,7 +166,6 @@ function restartTimerButton() {
 }
 
 function resetGratitationButton() {
-  console.log('clicked')
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
