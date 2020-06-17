@@ -8,6 +8,8 @@ const listContainer = document.getElementById('listContainer');
 const meditaionItemsContainer = document.getElementById('meditationItemsContainer');
 const noItemsSelectedModalCloseButton = document.getElementById('closeModal')
 const noCheckMarkModal = document.getElementById('noCheckMarkModal');
+const twoMinButton = document.getElementById('twoMin');
+const fiveMinButton = document.getElementById('fiveMin');
 let checkedItems = [];
 
 // eslint-disable-next-line no-unused-vars
@@ -15,12 +17,15 @@ let startCounterId = null;
 // eslint-disable-next-line no-unused-vars
 let seconds = 60;
 let minutes = 2;
+let timerLength = null;
 
 startButton.addEventListener('click', handleClickStartTime);
 pauseButton.addEventListener('click', hidePauseButton);
 restartTimer.addEventListener('click', restartTimerButton);
 resetGratitaion.addEventListener('click', resetGratitationButton);
 noItemsSelectedModalCloseButton.addEventListener('click', handleNoItemsSelectedCloseModal);
+twoMinButton.addEventListener('click', handleClickTwoMinButton);
+fiveMinButton.addEventListener('click', handleClickFiveMinButton);
 
 function handleNoItemsSelectedCloseModal() {
   noCheckMarkModal.classList.add('fade-out');
@@ -30,6 +35,25 @@ function handleNoItemsSelectedCloseModal() {
     noCheckMarkModal.classList.remove('fade-out')
   },
     900);
+}
+
+function handleClickTwoMinButton() {
+  minutesText.textContent = 2;
+  minutes = 2;
+  timerLength = 2;
+  twoMinButton.classList.remove('grey-button')
+  twoMinButton.classList.add('blue-button');
+  fiveMinButton.classList.add('grey-button');
+}
+
+function handleClickFiveMinButton() {
+  minutesText.textContent = 5;
+  minutes = 5;
+  timerLength = 5
+  twoMinButton.classList.remove('blue-button');
+  twoMinButton.classList.add('grey-button');
+  fiveMinButton.classList.remove('grey-button');
+  fiveMinButton.classList.add('blue-button');
 }
 
 function hideStartButton() {
@@ -67,10 +91,11 @@ function handleClickStartTime(event) {
 }
 
 function startCounter() {
-  if (minutes === 2) {
+  if (minutes === 2 || minutes === 5) {
     minutes -= 1;
     minutesText.textContent = minutes;
   }
+
   if (seconds > 0) {
     seconds -= 1;
     const secString = seconds.toString()
@@ -86,9 +111,10 @@ function startCounter() {
   }
 
   if (minutes > 0 && seconds === 0) {
-    seconds = 60;
+    seconds = 59;
     minutes -= 1;
     minutesText.textContent = minutes;
+    secondsText.textContent = seconds;
   }
 
   if (minutes === 0 && seconds === 0) {
@@ -111,8 +137,13 @@ function restartTimerButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = 60;
-  minutes = 2;
+  if (timerLength === 2) {
+    seconds = 60;
+    minutes = 2;
+  } else {
+    seconds = 60;
+    minutes = 5;
+  }
   minutesText.textContent = minutes;
   secondsText.textContent = '00';
 }
@@ -122,10 +153,15 @@ function resetGratitationButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = '00';
-  minutes = 2;
+  if(timerLength === 2) {
+    seconds = 60;
+    minutes = 2;
+  } else {
+    seconds = 60;
+    minutes = 5;
+  }
   minutesText.textContent = minutes;
-  secondsText.textContent = seconds;
+  secondsText.textContent = '00';
   meditaionItemsContainer.classList.add('display-none');
   checkedItems = [];
   listContainer.setAttribute('class', 'd-flex flex-wrap form-container-styling shadow fade-in')

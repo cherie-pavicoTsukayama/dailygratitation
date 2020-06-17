@@ -10,10 +10,29 @@ button {
   box-sizing: border-box;
   background-color: orange;
   padding: 0px 30px;
-  /* margin-top: 30px; */
   border-radius: 10px;
   font-size: 2rem;
   color: white;
+  transition: all .2s ease-in-out;
+}
+
+.blue-button {
+  box-sizing: border-box;
+  background-color: #E1EDFF;
+  padding: 0px 30px;
+  border-radius: 10px;
+  font-size: 2rem;
+  color: black;
+  transition: all .2s ease-in-out;
+}
+
+.grey-button {
+  box-sizing: border-box;
+  background-color: #c7c7c7;
+  padding: 0px 30px;
+  border-radius: 10px;
+  font-size: 2rem;
+  color: rgb(89, 89, 89);
   transition: all .2s ease-in-out;
 }
 
@@ -151,6 +170,11 @@ button.reset-restart {
 
 .mt-5 {
   margin-top: 3rem;
+}
+
+.mx-4 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .col-12 {
