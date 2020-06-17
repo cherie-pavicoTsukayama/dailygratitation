@@ -17,6 +17,7 @@ let startCounterId = null;
 // eslint-disable-next-line no-unused-vars
 let seconds = 60;
 let minutes = 2;
+let timerLength = null;
 
 startButton.addEventListener('click', handleClickStartTime);
 pauseButton.addEventListener('click', hidePauseButton);
@@ -39,6 +40,7 @@ function handleNoItemsSelectedCloseModal() {
 function handleClickTwoMinButton() {
   minutesText.textContent = 2;
   minutes = 2;
+  timerLength = 2;
   twoMinButton.classList.remove('grey-button')
   twoMinButton.classList.add('blue-button');
   fiveMinButton.classList.add('grey-button');
@@ -47,6 +49,7 @@ function handleClickTwoMinButton() {
 function handleClickFiveMinButton() {
   minutesText.textContent = 5;
   minutes = 5;
+  timerLength = 5
   twoMinButton.classList.remove('blue-button');
   twoMinButton.classList.add('grey-button');
   fiveMinButton.classList.remove('grey-button');
@@ -134,8 +137,13 @@ function restartTimerButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = 60;
-  minutes = 2;
+  if (timerLength === 2) {
+    seconds = 60;
+    minutes = 2;
+  } else {
+    seconds = 60;
+    minutes = 5;
+  }
   minutesText.textContent = minutes;
   secondsText.textContent = '00';
 }
@@ -145,10 +153,15 @@ function resetGratitationButton() {
   clearInterval(startCounterId);
   startButton.classList.remove('display-none');
   pauseButton.classList.add('display-none');
-  seconds = '00';
-  minutes = 2;
+  if(timerLength === 2) {
+    seconds = 60;
+    minutes = 2;
+  } else {
+    seconds = 60;
+    minutes = 5;
+  }
   minutesText.textContent = minutes;
-  secondsText.textContent = seconds;
+  secondsText.textContent = '00';
   meditaionItemsContainer.classList.add('display-none');
   checkedItems = [];
   listContainer.setAttribute('class', 'd-flex flex-wrap form-container-styling shadow fade-in')
