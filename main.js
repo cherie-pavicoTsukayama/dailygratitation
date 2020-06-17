@@ -39,11 +39,18 @@ function handleNoItemsSelectedCloseModal() {
 function handleClickTwoMinButton() {
   minutesText.textContent = 2;
   minutes = 2;
+  twoMinButton.classList.remove('grey-button')
+  twoMinButton.classList.add('blue-button');
+  fiveMinButton.classList.add('grey-button');
 }
 
 function handleClickFiveMinButton() {
   minutesText.textContent = 5;
   minutes = 5;
+  twoMinButton.classList.remove('blue-button');
+  twoMinButton.classList.add('grey-button');
+  fiveMinButton.classList.remove('grey-button');
+  fiveMinButton.classList.add('blue-button');
 }
 
 function hideStartButton() {
